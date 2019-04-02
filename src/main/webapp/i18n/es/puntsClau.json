@@ -1,0 +1,25 @@
+{
+    "backendLsRidersApp": {
+        "puntsClau": {
+            "home": {
+                "title": "Punts Claus",
+                "createLabel": "Crear nuevo Punts Clau",
+                "createOrEditLabel": "Crear o editar Punts Clau"
+            },
+            "created": "Un nuevo Punts Clau ha sido creado con el identificador {{ param }}",
+            "updated": "Un Punts Clau ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Punts Clau ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Punts Clau {{ id }}?"
+            },
+            "detail": {
+                "title": "Punts Clau"
+            },
+            "observation": "Observation",
+            "latitud": "Latitud",
+            "longitud": "Longitud",
+            "type": "Type",
+            "event": "Event"
+        }
+    }
+}

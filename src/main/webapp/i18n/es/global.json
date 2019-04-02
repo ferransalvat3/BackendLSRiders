@@ -8,6 +8,12 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entidades",
+                "userExt": "User Ext",
+                "moto": "Moto",
+                "event": "Event",
+                "ratingEvent": "Rating Event",
+                "participacionEvento": "Participacion Evento",
+                "puntsClau": "Punts Clau",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

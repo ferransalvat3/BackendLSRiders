@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-moto-heading" jhiTranslate="backendLsRidersApp.moto.home.createOrEditLabel">Create or edit a Moto</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!moto.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="moto.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.moto.brand" for="field_brand">Brand</label>
+                    <input type="text" class="form-control" name="brand" id="field_brand"
+                        [(ngModel)]="moto.brand" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.moto.model" for="field_model">Model</label>
+                    <input type="text" class="form-control" name="model" id="field_model"
+                        [(ngModel)]="moto.model" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.moto.cc" for="field_cc">Cc</label>
+                    <input type="number" class="form-control" name="cc" id="field_cc"
+                        [(ngModel)]="moto.cc" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.moto.year" for="field_year">Year</label>
+                    <div class="d-flex">
+                        <input id="field_year" type="datetime-local" class="form-control" name="year" [(ngModel)]="year" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.moto.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" [(ngModel)]="moto.user" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === moto.user?.id ? moto.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

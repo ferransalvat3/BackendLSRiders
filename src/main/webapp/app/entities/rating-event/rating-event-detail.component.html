@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ratingEvent">
+            <h2><span jhiTranslate="backendLsRidersApp.ratingEvent.detail.title">Rating Event</span> {{ratingEvent.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="backendLsRidersApp.ratingEvent.puntuacion">Puntuacion</span></dt>
+                <dd>
+                    <span>{{ratingEvent.puntuacion}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.ratingEvent.valoracion">Valoracion</span></dt>
+                <dd>
+                    <span>{{ratingEvent.valoracion}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.ratingEvent.date">Date</span></dt>
+                <dd>
+                    <span>{{ratingEvent.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.ratingEvent.user">User</span></dt>
+                <dd>
+                    {{ratingEvent.user?.login}}
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.ratingEvent.event">Event</span></dt>
+                <dd>
+                    <div *ngIf="ratingEvent.event">
+                        <a [routerLink]="['/event', ratingEvent.event?.id, 'view']">{{ratingEvent.event?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/rating-event', ratingEvent.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
