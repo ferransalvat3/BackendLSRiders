@@ -1,0 +1,60 @@
+
+
+entity UserExt {
+	phoneNumber String,
+    student Boolean
+}
+
+entity Moto {
+	brand String
+	model String,
+    cc Integer
+    year ZonedDateTime,
+    
+}
+
+entity Event{
+	name String,
+	gpx Blob,
+    kmRoute Integer,
+    timeRoute Double,
+    date ZonedDateTime,
+    descripction String,
+    observacionsPrev String
+}
+
+entity RatingEvent{
+	puntuacion Integer,
+    valoracion String,
+    date ZonedDateTime
+}
+
+entity ParticipacionEvento{
+	fechaApuntado ZonedDateTime
+}
+
+
+entity PuntsClau{
+	observation String,
+    latitud Float,
+    longitud Float,
+    type String
+}
+
+relationship ManyToOne {
+  Moto{user(login)} to User,
+  RatingEvent{user(login)} to User,
+  RatingEvent{event(name)} to Event{rating},
+  Event{creador(login)} to User,
+  PuntsClau{event(name)} to Event{punt},
+  ParticipacionEvento{user(login)} to User,
+  ParticipacionEvento{event(name)} to Event{participacion}
+  
+}
+
+relationship OneToOne {
+	UserExt{user(login)} to User
+}
+
+
+
