@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="moto">
+            <h2><span jhiTranslate="backendLsRidersApp.moto.detail.title">Moto</span> {{moto.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="backendLsRidersApp.moto.brand">Brand</span></dt>
+                <dd>
+                    <span>{{moto.brand}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.moto.model">Model</span></dt>
+                <dd>
+                    <span>{{moto.model}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.moto.cc">Cc</span></dt>
+                <dd>
+                    <span>{{moto.cc}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.moto.year">Year</span></dt>
+                <dd>
+                    <span>{{moto.year}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.moto.user">User</span></dt>
+                <dd>
+                    {{moto.user?.login}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/moto', moto.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

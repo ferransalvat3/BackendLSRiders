@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-rating-event-heading" jhiTranslate="backendLsRidersApp.ratingEvent.home.createOrEditLabel">Create or edit a Rating Event</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!ratingEvent.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="ratingEvent.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.ratingEvent.puntuacion" for="field_puntuacion">Puntuacion</label>
+                    <input type="number" class="form-control" name="puntuacion" id="field_puntuacion"
+                        [(ngModel)]="ratingEvent.puntuacion" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.ratingEvent.valoracion" for="field_valoracion">Valoracion</label>
+                    <input type="text" class="form-control" name="valoracion" id="field_valoracion"
+                        [(ngModel)]="ratingEvent.valoracion" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.ratingEvent.date" for="field_date">Date</label>
+                    <div class="d-flex">
+                        <input id="field_date" type="datetime-local" class="form-control" name="date" [(ngModel)]="date" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.ratingEvent.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" [(ngModel)]="ratingEvent.user" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === ratingEvent.user?.id ? ratingEvent.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.ratingEvent.event" for="field_event">Event</label>
+                    <select class="form-control" id="field_event" name="event" [(ngModel)]="ratingEvent.event" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="eventOption.id === ratingEvent.event?.id ? ratingEvent.event : eventOption" *ngFor="let eventOption of events; trackBy: trackEventById">{{eventOption.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

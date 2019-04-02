@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="participacionEvento">
+            <h2><span jhiTranslate="backendLsRidersApp.participacionEvento.detail.title">Participacion Evento</span> {{participacionEvento.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="backendLsRidersApp.participacionEvento.fechaApuntado">Fecha Apuntado</span></dt>
+                <dd>
+                    <span>{{participacionEvento.fechaApuntado}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.participacionEvento.user">User</span></dt>
+                <dd>
+                    {{participacionEvento.user?.login}}
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.participacionEvento.event">Event</span></dt>
+                <dd>
+                    <div *ngIf="participacionEvento.event">
+                        <a [routerLink]="['/event', participacionEvento.event?.id, 'view']">{{participacionEvento.event?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/participacion-evento', participacionEvento.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{
+    "backendLsRidersApp": {
+        "participacionEvento": {
+            "home": {
+                "title": "Participacion Eventos",
+                "createLabel": "Create a new Participacion Evento",
+                "createOrEditLabel": "Create or edit a Participacion Evento"
+            },
+            "created": "A new Participacion Evento is created with identifier {{ param }}",
+            "updated": "A Participacion Evento is updated with identifier {{ param }}",
+            "deleted": "A Participacion Evento is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Participacion Evento {{ id }}?"
+            },
+            "detail": {
+                "title": "Participacion Evento"
+            },
+            "fechaApuntado": "Fecha Apuntado",
+            "user": "User",
+            "event": "Event"
+        }
+    }
+}

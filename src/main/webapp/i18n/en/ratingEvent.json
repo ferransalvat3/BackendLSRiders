@@ -1,0 +1,25 @@
+{
+    "backendLsRidersApp": {
+        "ratingEvent": {
+            "home": {
+                "title": "Rating Events",
+                "createLabel": "Create a new Rating Event",
+                "createOrEditLabel": "Create or edit a Rating Event"
+            },
+            "created": "A new Rating Event is created with identifier {{ param }}",
+            "updated": "A Rating Event is updated with identifier {{ param }}",
+            "deleted": "A Rating Event is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Rating Event {{ id }}?"
+            },
+            "detail": {
+                "title": "Rating Event"
+            },
+            "puntuacion": "Puntuacion",
+            "valoracion": "Valoracion",
+            "date": "Date",
+            "user": "User",
+            "event": "Event"
+        }
+    }
+}

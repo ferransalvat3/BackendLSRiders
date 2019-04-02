@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="event">
+            <h2><span jhiTranslate="backendLsRidersApp.event.detail.title">Event</span> {{event.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="backendLsRidersApp.event.name">Name</span></dt>
+                <dd>
+                    <span>{{event.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.event.gpx">Gpx</span></dt>
+                <dd>
+                    <div *ngIf="event.gpx">
+                        <a (click)="openFile(event.gpxContentType, event.gpx)" jhiTranslate="entity.action.open">open</a>
+                        {{event.gpxContentType}}, {{byteSize(event.gpx)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.event.kmRoute">Km Route</span></dt>
+                <dd>
+                    <span>{{event.kmRoute}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.event.timeRoute">Time Route</span></dt>
+                <dd>
+                    <span>{{event.timeRoute}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.event.date">Date</span></dt>
+                <dd>
+                    <span>{{event.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.event.descripction">Descripction</span></dt>
+                <dd>
+                    <span>{{event.descripction}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.event.observacionsPrev">Observacions Prev</span></dt>
+                <dd>
+                    <span>{{event.observacionsPrev}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.event.creador">Creador</span></dt>
+                <dd>
+                    {{event.creador?.login}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/event', event.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

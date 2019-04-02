@@ -1,0 +1,42 @@
+{
+    "name": "RatingEvent",
+    "fields": [
+        {
+            "fieldName": "puntuacion",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "valoracion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "ratingEvent",
+            "relationshipName": "user",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "event",
+            "otherEntityRelationshipName": "rating",
+            "relationshipName": "event",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20190402155744",
+    "entityTableName": "rating_event",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

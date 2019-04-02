@@ -1,0 +1,81 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-event-heading" jhiTranslate="backendLsRidersApp.event.home.createOrEditLabel">Create or edit a Event</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!event.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="event.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.event.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="event.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.event.gpx" for="field_gpx">Gpx</label>
+                    <div>
+                        <div *ngIf="event.gpx" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(event.gpxContentType, event.gpx)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{event.gpxContentType}}, {{byteSize(event.gpx)}}</span>
+                            <button type="button" (click)="event.gpx=null;event.gpxContentType=null;"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_gpx" (change)="setFileData($event, event, 'gpx', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="gpx" id="field_gpx"
+                        [(ngModel)]="event.gpx" />
+                    <input type="hidden" class="form-control" name="gpxContentType" id="field_gpxContentType"
+                        [(ngModel)]="event.gpxContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.event.kmRoute" for="field_kmRoute">Km Route</label>
+                    <input type="number" class="form-control" name="kmRoute" id="field_kmRoute"
+                        [(ngModel)]="event.kmRoute" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.event.timeRoute" for="field_timeRoute">Time Route</label>
+                    <input type="number" class="form-control" name="timeRoute" id="field_timeRoute"
+                        [(ngModel)]="event.timeRoute" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.event.date" for="field_date">Date</label>
+                    <div class="d-flex">
+                        <input id="field_date" type="datetime-local" class="form-control" name="date" [(ngModel)]="date" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.event.descripction" for="field_descripction">Descripction</label>
+                    <input type="text" class="form-control" name="descripction" id="field_descripction"
+                        [(ngModel)]="event.descripction" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.event.observacionsPrev" for="field_observacionsPrev">Observacions Prev</label>
+                    <input type="text" class="form-control" name="observacionsPrev" id="field_observacionsPrev"
+                        [(ngModel)]="event.observacionsPrev" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendLsRidersApp.event.creador" for="field_creador">Creador</label>
+                    <select class="form-control" id="field_creador" name="creador" [(ngModel)]="event.creador" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === event.creador?.id ? event.creador : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

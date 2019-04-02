@@ -1,0 +1,34 @@
+{
+    "name": "ParticipacionEvento",
+    "fields": [
+        {
+            "fieldName": "fechaApuntado",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "participacionEvento",
+            "relationshipName": "user",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "event",
+            "otherEntityRelationshipName": "participacion",
+            "relationshipName": "event",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20190402155745",
+    "entityTableName": "participacion_evento",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

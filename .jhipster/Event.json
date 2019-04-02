@@ -1,0 +1,70 @@
+{
+    "name": "Event",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gpx",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "kmRoute",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "timeRoute",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "descripction",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "observacionsPrev",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "event",
+            "relationshipName": "creador",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "ratingEvent",
+            "otherEntityRelationshipName": "event",
+            "relationshipName": "rating"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "puntsClau",
+            "otherEntityRelationshipName": "event",
+            "relationshipName": "punt"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "participacionEvento",
+            "otherEntityRelationshipName": "event",
+            "relationshipName": "participacion"
+        }
+    ],
+    "changelogDate": "20190402155743",
+    "entityTableName": "event",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
