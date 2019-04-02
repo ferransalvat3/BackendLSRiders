@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "gitCompany": "",
+    "baseName": "BackendLSRiders",
+    "packageName": "com.lsriders.backend",
+    "packageFolder": "com/lsriders/backend",
+    "serverPort": 8080,
+    "serviceDiscoveryType": false,
+    "authenticationType": "jwt",
+    "uaaBaseName": "../uaa",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "enableSwaggerCodegen": false,
+    "messageBroker": false,
+    "buildTool": "maven",
+    "useSass": false,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": [
+      "es",
+      "en"
+    ],
+    "clientFramework": "angularX",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "5.8.2",
+    "jwtSecretKey": "ZjY3NjRmNmE4YmVhNTYxMzkzNmNkMjY4MzBjMDk2ZWZjNmU0N2Y1NGIzMWI5NWExN2MyOWFkMTcxNzI3MGIxMDM3ODJhNDU1Yjg2NDFjNzkzZGJhNDYyMDA5ZjcxMWJlMDhiNTMxMWYzYTg5NDE5MjJiNzE2NTM1YWYxMTIzMTM=",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": []
+  },
+  "git-provider": "GitHub",
+  "git-company": "ferransalvat3",
+  "repository-name": "BackendLSRiders"
+}
