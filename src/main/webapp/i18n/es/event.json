@@ -1,0 +1,31 @@
+{
+    "backendLsRidersApp": {
+        "event": {
+            "home": {
+                "title": "Events",
+                "createLabel": "Crear nuevo Event",
+                "createOrEditLabel": "Crear o editar Event"
+            },
+            "created": "Un nuevo Event ha sido creado con el identificador {{ param }}",
+            "updated": "Un Event ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Event ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Event {{ id }}?"
+            },
+            "detail": {
+                "title": "Event"
+            },
+            "name": "Name",
+            "gpx": "Gpx",
+            "kmRoute": "Km Route",
+            "timeRoute": "Time Route",
+            "date": "Date",
+            "descripction": "Descripction",
+            "observacionsPrev": "Observacions Prev",
+            "creador": "Creador",
+            "rating": "Rating",
+            "punt": "Punt",
+            "rating": "Rating"
+        }
+    }
+}

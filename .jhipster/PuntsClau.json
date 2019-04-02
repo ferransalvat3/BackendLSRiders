@@ -1,0 +1,39 @@
+{
+    "name": "PuntsClau",
+    "fields": [
+        {
+            "fieldName": "observation",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "latitud",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "longitud",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "event",
+            "otherEntityRelationshipName": "punt",
+            "relationshipName": "event",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20190402154303",
+    "entityTableName": "punts_clau",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

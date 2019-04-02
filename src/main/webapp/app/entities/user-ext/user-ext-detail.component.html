@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="userExt">
+            <h2><span jhiTranslate="backendLsRidersApp.userExt.detail.title">User Ext</span> {{userExt.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="backendLsRidersApp.userExt.phoneNumber">Phone Number</span></dt>
+                <dd>
+                    <span>{{userExt.phoneNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.userExt.student">Student</span></dt>
+                <dd>
+                    <span>{{userExt.student}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendLsRidersApp.userExt.user">User</span></dt>
+                <dd>
+                    {{userExt.user?.login}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/user-ext', userExt.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

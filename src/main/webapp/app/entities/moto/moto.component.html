@@ -1,0 +1,64 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="backendLsRidersApp.moto.home.title">Motos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-moto" [routerLink]="['/moto/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="backendLsRidersApp.moto.home.createLabel">
+            Create new Moto
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="motos">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="backendLsRidersApp.moto.brand">Brand</span></th>
+            <th><span jhiTranslate="backendLsRidersApp.moto.model">Model</span></th>
+            <th><span jhiTranslate="backendLsRidersApp.moto.cc">Cc</span></th>
+            <th><span jhiTranslate="backendLsRidersApp.moto.year">Year</span></th>
+            <th><span jhiTranslate="backendLsRidersApp.moto.user">User</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let moto of motos ;trackBy: trackId">
+                <td><a [routerLink]="['/moto', moto.id, 'view' ]">{{moto.id}}</a></td>
+                <td>{{moto.brand}}</td>
+                <td>{{moto.model}}</td>
+                <td>{{moto.cc}}</td>
+                <td>{{moto.year | date:'medium'}}</td>
+                <td>
+                    {{moto.user?.login}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/moto', moto.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/moto', moto.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'moto', { outlets: { popup: moto.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
