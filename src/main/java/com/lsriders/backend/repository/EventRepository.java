@@ -16,4 +16,6 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     @Query("select event from Event event where event.creador.login = ?#{principal.username}")
     List<Event> findByCreadorIsCurrentUser();
 
+    @Query("select event from Event event order by event.kmRoute desc ")
+    List<Event> getEventsOrderByKm();
 }

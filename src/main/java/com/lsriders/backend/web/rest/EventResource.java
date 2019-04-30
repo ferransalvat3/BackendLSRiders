@@ -6,6 +6,7 @@ import com.lsriders.backend.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -77,10 +78,16 @@ public class EventResource {
      *
      * @return the ResponseEntity with status 200 (OK) and the list of events in body
      */
-    @GetMapping("/events")
-    public List<Event> getAllEvents() {
+//    @GetMapping("/events")
+//    public List<Event> getAllEvents() {
+//        log.debug("REST request to get all Events");
+//        return eventRepository.getEventsOrderByKm();
+//    }
+
+    @GetMapping("/events")      //Amb el mapping i el pageable, podem fer una consulta de rutes, i orderby el parametre que s vulguem.
+    public List<Event> getAllEvents(Pageable pageable) {
         log.debug("REST request to get all Events");
-        return eventRepository.findAll();
+        return eventRepository.findAll(pageable).getContent();
     }
 
     /**

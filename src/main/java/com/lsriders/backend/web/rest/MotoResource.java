@@ -1,6 +1,7 @@
 package com.lsriders.backend.web.rest;
 import com.lsriders.backend.domain.Moto;
 import com.lsriders.backend.repository.MotoRepository;
+import com.lsriders.backend.security.SecurityUtils;
 import com.lsriders.backend.web.rest.errors.BadRequestAlertException;
 import com.lsriders.backend.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -94,6 +95,12 @@ public class MotoResource {
         log.debug("REST request to get Moto : {}", id);
         Optional<Moto> moto = motoRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(moto);
+    }
+
+    @GetMapping("/motos/by-brand/{brand}")
+    public List<Moto> getMotoByBrand(@PathVariable String brand) {
+        log.debug("REST request to get Moto : {}", brand);
+        return motoRepository.findByBrandAndUserLogin(brand, SecurityUtils.getCurrentUserLogin().get());
     }
 
     /**
