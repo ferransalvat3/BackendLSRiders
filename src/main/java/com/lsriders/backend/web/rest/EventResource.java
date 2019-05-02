@@ -90,6 +90,13 @@ public class EventResource {
         return eventRepository.findAll(pageable).getContent();
     }
 
+    @GetMapping("/events/by-Name/{name}")
+    public List<Event> getByName(@PathVariable String name){
+        List<Event> nameList = eventRepository.getEventsByName(name);
+        return nameList;
+    }
+
+
     /**
      * GET  /events/:id : get the "id" event.
      *
