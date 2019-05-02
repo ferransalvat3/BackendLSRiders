@@ -90,7 +90,14 @@ public class EventResource {
         return eventRepository.findAll(pageable).getContent();
     }
 
-    @GetMapping("/events/by-Name/{name}")
+
+    /**
+     * GET  /events/:name : get the "name" event.
+     *
+     * @param name the id of the event to retrieve
+     * @return nameList que es el nom de la ruta
+     * */
+    @GetMapping("/events/by-Name/{name}")   //query que retorna el nom de una ruta en concret, juntament amb els detalls de la ruta
     public List<Event> getByName(@PathVariable String name){
         List<Event> nameList = eventRepository.getEventsByName(name);
         return nameList;
