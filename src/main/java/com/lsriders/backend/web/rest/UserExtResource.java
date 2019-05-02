@@ -1,4 +1,5 @@
 package com.lsriders.backend.web.rest;
+import com.lsriders.backend.domain.Event;
 import com.lsriders.backend.domain.UserExt;
 import com.lsriders.backend.repository.UserExtRepository;
 import com.lsriders.backend.web.rest.errors.BadRequestAlertException;
@@ -6,6 +7,7 @@ import com.lsriders.backend.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -77,11 +79,20 @@ public class UserExtResource {
      *
      * @return the ResponseEntity with status 200 (OK) and the list of userExts in body
      */
+    /*
     @GetMapping("/user-exts")
-    public List<UserExt> getAllUserExts() {
+    public List<UserExt> getAllUserExts(Pageable pageable) {
         log.debug("REST request to get all UserExts");
-        return userExtRepository.findAll();
+        return userExtRepository.findAll(pageable);
     }
+    */
+    @GetMapping("/user-exts")
+    public List<UserExt> getAllUserExts(Pageable pageable) {
+        log.debug("REST request to get all Events");
+        return userExtRepository.findAll(pageable).getContent();
+    }
+
+
 
     /**
      * GET  /user-exts/:id : get the "id" userExt.

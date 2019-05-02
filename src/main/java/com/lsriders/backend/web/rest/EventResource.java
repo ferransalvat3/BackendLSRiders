@@ -84,7 +84,7 @@ public class EventResource {
 //        return eventRepository.getEventsOrderByKm();
 //    }
 
-    @GetMapping("/events")      //Amb el mapping i el pageable, podem fer una consulta de rutes, i orderby el parametre que s vulguem.
+    @GetMapping("/events")      //Amb el mapping i el pageable, podem fer una consulta de rutes, i orderby el parametre que vulguem.
     public List<Event> getAllEvents(Pageable pageable) {
         log.debug("REST request to get all Events");
         return eventRepository.findAll(pageable).getContent();
