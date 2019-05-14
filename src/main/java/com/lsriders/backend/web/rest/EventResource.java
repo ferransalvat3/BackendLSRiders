@@ -1,6 +1,7 @@
 package com.lsriders.backend.web.rest;
 import com.lsriders.backend.domain.Event;
 import com.lsriders.backend.repository.EventRepository;
+import com.lsriders.backend.service.dto.EventDTO;
 import com.lsriders.backend.web.rest.errors.BadRequestAlertException;
 import com.lsriders.backend.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -90,13 +91,20 @@ public class EventResource {
         return eventRepository.findAll(pageable).getContent();
     }
 
+    @GetMapping("/events-dto")      //Amb el mapping i el pageable, podem fer una consulta de rutes, i orderby el parametre que vulguem.
+    public List<EventDTO> getAllEventsDTO() {
+        log.debug("REST request to get all Events");
+        return eventRepository.getEventsByNameKmRouteDesc();
+    }
+
 
     /**
      * GET  /events/:name : get the "name" event.
      *
      * @param name the id of the event to retrieve
      * @return nameList que es el nom de la ruta
-     * */
+     *
+     **/
     @GetMapping("/events/by-Name/{name}")   //query que retorna el nom de una ruta en concret, juntament amb els detalls de la ruta
     public List<Event> getByName(@PathVariable String name){
         List<Event> nameList = eventRepository.getEventsByName(name);
