@@ -16,4 +16,6 @@ public interface RatingEventRepository extends JpaRepository<RatingEvent, Long> 
     @Query("select rating_event from RatingEvent rating_event where rating_event.user.login = ?#{principal.username}")
     List<RatingEvent> findByUserIsCurrentUser();
 
+
+
 }

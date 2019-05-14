@@ -92,6 +92,12 @@ public class UserExtResource {
         return userExtRepository.findAll(pageable).getContent();
     }
 
+    @GetMapping("/user-exts/students")
+    public List<UserExt> getUserExtStudent() {
+        log.debug("REST request to get all Students");
+        return userExtRepository.findByUserStudent();
+    }
+
 
 
     /**
