@@ -11,6 +11,7 @@ import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -120,6 +121,7 @@ public class MotoResource {
 
 
     @GetMapping("/motos/by-userextid/{id}")
+    @Transactional
     public List<Moto> getMotoById(@PathVariable Long id) {
         log.debug("REST request to get Moto : {}");
         User user = userExtRepository.findById(id).get().getUser();
