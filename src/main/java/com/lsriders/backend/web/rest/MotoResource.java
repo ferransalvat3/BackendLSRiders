@@ -120,7 +120,7 @@ public class MotoResource {
     }
 
 
-    @GetMapping("/motos/by-userextid/{id}")
+    @GetMapping("/motos/by-userextid/")
     @Transactional
     public List<Moto> getMotoById(@RequestParam Long id) {
         log.debug("REST request to get Moto : {}");
