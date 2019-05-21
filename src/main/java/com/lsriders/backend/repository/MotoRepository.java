@@ -19,4 +19,13 @@ public interface MotoRepository extends JpaRepository<Moto, Long> {
 
     List<Moto> findByBrandAndUserLogin(String brand, String login);
 
+    List<Moto> findByUser(User user);
+    //
+    //
+    // List<Moto> findById(String id, String login);
+
+
+
+
+
 }

@@ -82,7 +82,7 @@ public class MotoResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final MotoResource motoResource = new MotoResource(motoRepository);
+        final MotoResource motoResource = new MotoResource(motoRepository,null, null);
         this.restMotoMockMvc = MockMvcBuilders.standaloneSetup(motoResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -167,7 +167,7 @@ public class MotoResourceIntTest {
             .andExpect(jsonPath("$.[*].cc").value(hasItem(DEFAULT_CC)))
             .andExpect(jsonPath("$.[*].year").value(hasItem(sameInstant(DEFAULT_YEAR))));
     }
-    
+
     @Test
     @Transactional
     public void getMoto() throws Exception {

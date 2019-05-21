@@ -2,11 +2,13 @@ package com.lsriders.backend.repository;
 
 import com.lsriders.backend.domain.User;
 
+import com.lsriders.backend.domain.UserExt;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
@@ -44,4 +46,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findOneWithAuthoritiesByEmail(String email);
 
     Page<User> findAllByLoginNot(Pageable pageable, String login);
+
+/*
+    @Query("select user from User user where user.student=true")
+    List<User> findByUserId();
+*/
 }

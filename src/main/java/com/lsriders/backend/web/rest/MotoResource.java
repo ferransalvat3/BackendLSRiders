@@ -1,6 +1,9 @@
 package com.lsriders.backend.web.rest;
 import com.lsriders.backend.domain.Moto;
+import com.lsriders.backend.domain.User;
 import com.lsriders.backend.repository.MotoRepository;
+import com.lsriders.backend.repository.UserExtRepository;
+import com.lsriders.backend.repository.UserRepository;
 import com.lsriders.backend.security.SecurityUtils;
 import com.lsriders.backend.web.rest.errors.BadRequestAlertException;
 import com.lsriders.backend.web.rest.util.HeaderUtil;
@@ -28,9 +31,14 @@ public class MotoResource {
     private static final String ENTITY_NAME = "moto";
 
     private final MotoRepository motoRepository;
+    private final UserRepository userRepository;
+    private final UserExtRepository userExtRepository;
 
-    public MotoResource(MotoRepository motoRepository) {
+
+    public MotoResource(MotoRepository motoRepository, UserRepository userRepository, UserExtRepository userExtRepository) {
         this.motoRepository = motoRepository;
+        this.userRepository = userRepository;
+        this.userExtRepository = userExtRepository;
     }
 
     /**
@@ -102,6 +110,23 @@ public class MotoResource {
         log.debug("REST request to get Moto : {}", brand);
         return motoRepository.findByBrandAndUserLogin(brand, SecurityUtils.getCurrentUserLogin().get());
     }
+
+
+    @GetMapping("/my-motos")
+    public List<Moto> getMotoById() {
+        log.debug("REST request to get Moto : {}");
+        return motoRepository.findByUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).get());
+    }
+
+
+    @GetMapping("/motos/by-userextid/{id}")
+    public List<Moto> getMotoById(@PathVariable Long id) {
+        log.debug("REST request to get Moto : {}");
+        User user = userExtRepository.findById(id).get().getUser();
+        return motoRepository.findByUser(user);
+    }
+
+
 
     /**
      * DELETE  /motos/:id : delete the "id" moto.
