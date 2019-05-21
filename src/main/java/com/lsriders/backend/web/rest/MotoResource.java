@@ -122,7 +122,7 @@ public class MotoResource {
 
     @GetMapping("/motos/by-userextid/{id}")
     @Transactional
-    public List<Moto> getMotoById(@PathVariable Long id) {
+    public List<Moto> getMotoById(@RequestParam Long id) {
         log.debug("REST request to get Moto : {}");
         User user = userExtRepository.findById(id).get().getUser();
         return motoRepository.findByUser(user);
