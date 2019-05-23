@@ -1,7 +1,10 @@
 package com.lsriders.backend.web.rest;
 
 import com.lsriders.backend.config.Constants;
+import com.lsriders.backend.domain.Moto;
 import com.lsriders.backend.domain.User;
+import com.lsriders.backend.domain.UserExt;
+import com.lsriders.backend.repository.UserExtRepository;
 import com.lsriders.backend.repository.UserRepository;
 import com.lsriders.backend.security.AuthoritiesConstants;
 import com.lsriders.backend.service.MailService;
@@ -22,6 +25,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -64,12 +68,14 @@ public class UserResource {
     private final UserRepository userRepository;
 
     private final MailService mailService;
+    private final UserExtRepository userExtRepository;
 
-    public UserResource(UserService userService, UserRepository userRepository, MailService mailService) {
+    public UserResource(UserService userService, UserRepository userRepository, MailService mailService, UserExtRepository userExtRepository) {
 
         this.userService = userService;
         this.userRepository = userRepository;
         this.mailService = mailService;
+        this.userExtRepository = userExtRepository;
     }
 
     /**
@@ -130,6 +136,17 @@ public class UserResource {
         return ResponseUtil.wrapOrNotFound(updatedUser,
             HeaderUtil.createAlert("userManagement.updated", userDTO.getLogin()));
     }
+
+
+    @GetMapping("/users/id/{id}")
+    @Transactional
+    public UserExt getUserId(@PathVariable long id) {
+        UserExt UserId;
+        UserId = userExtRepository.findByUserId(id);
+        return UserId;
+    }
+
+
 
     /**
      * GET /users : get all users.

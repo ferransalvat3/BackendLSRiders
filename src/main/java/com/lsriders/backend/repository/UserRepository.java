@@ -1,5 +1,6 @@
 package com.lsriders.backend.repository;
 
+import com.lsriders.backend.domain.Moto;
 import com.lsriders.backend.domain.User;
 
 import com.lsriders.backend.domain.UserExt;
@@ -47,8 +48,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Page<User> findAllByLoginNot(Pageable pageable, String login);
 
-/*
-    @Query("select user from User user where user.student=true")
-    List<User> findByUserId();
-*/
+
+
+    List<User> findById(long id);
 }

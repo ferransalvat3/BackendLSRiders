@@ -1,5 +1,7 @@
 package com.lsriders.backend.web.rest;
 import com.lsriders.backend.domain.Event;
+import com.lsriders.backend.domain.Moto;
+import com.lsriders.backend.domain.User;
 import com.lsriders.backend.domain.UserExt;
 import com.lsriders.backend.repository.UserExtRepository;
 import com.lsriders.backend.web.rest.errors.BadRequestAlertException;
@@ -29,9 +31,12 @@ public class UserExtResource {
     private static final String ENTITY_NAME = "userExt";
 
     private final UserExtRepository userExtRepository;
+    //private final UserRepository userRepository;
+
 
     public UserExtResource(UserExtRepository userExtRepository) {
         this.userExtRepository = userExtRepository;
+        //this.userRepository = userRepository;
     }
 
     /**
@@ -97,6 +102,13 @@ public class UserExtResource {
         log.debug("REST request to get all Students");
         return userExtRepository.findByUserStudent();
     }
+
+    /*@GetMapping("/users-exts/by-userid/{id}")
+    public List<User> getUserExtById(@PathVariable Long id) {
+        log.debug("REST request to get UserExt : {}");
+        User user = userExtRepository.findById(id).get().getUser();
+        return userExtRepository.findByUser(user);
+    }*/
 
 
 

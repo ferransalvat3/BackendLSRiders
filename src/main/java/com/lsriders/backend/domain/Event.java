@@ -7,6 +7,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;
@@ -23,7 +24,7 @@ import java.util.Objects;
 public class Event implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,6 +35,18 @@ public class Event implements Serializable {
     @Lob
     @Column(name = "gpx")
     private byte[] gpx;
+
+    @Size(max = 256)
+    @Column(name = "gpx_url", length = 256)
+    private String gpxUrl;
+
+    public String getGpxUrl() {
+        return gpxUrl;
+    }
+
+    public void setGpxUrl(String gpxUrl) {
+        this.gpxUrl = gpxUrl;
+    }
 
     @Column(name = "gpx_content_type")
     private String gpxContentType;
