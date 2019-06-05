@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -97,6 +102,35 @@ public class EventResource {
         return eventRepository.getEventsByNameKmRouteDesc();
     }
 
+    @GetMapping("/events/dateAfter/")
+    public List<Event> getEventsAfter(@RequestParam String dateString) {
+        /*
+        log.debug("REST request to get Event : {}", date);
+
+        String pattern = "yyyy-MM-dd";
+        DateTimeFormatter Parser = DateTimeFormatter.ofPattern(pattern);
+        LocalDateTime dateTime = LocalDateTime.parse(date, Parser);
+
+        //ZonedDateTime zonedDateTime = ZonedDateTime.parse(date,Parser);
+
+        ZonedDateTime madrid = dateTime.atZone(ZoneId.of("Europe/Madrid"));
+        */
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate dateTime = LocalDate.parse(dateString, formatter);
+
+        ZonedDateTime resultado = dateTime.atStartOfDay(ZoneId.systemDefault());
+        return eventRepository.findByDateAfter(resultado);
+    }
+
+    @GetMapping("/events/dateBefore/")
+    public List<Event> getEventsBefore(@RequestParam String dateString) {
+        //log.debug("REST request to get Event : {}", date);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate dateTime = LocalDate.parse(dateString, formatter);
+
+        ZonedDateTime resultado = dateTime.atStartOfDay(ZoneId.systemDefault());
+        return eventRepository.findByDateAfter(resultado);
+    }
 
     /**
      * GET  /events/:name : get the "name" event.

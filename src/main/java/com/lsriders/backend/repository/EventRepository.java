@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.NamedQuery;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -30,5 +31,9 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 
     @Query("select new com.lsriders.backend.service.dto.EventDTO(event.id, event.name, event.kmRoute, event.descripction) from Event event")
     List<EventDTO> getEventsByNameKmRouteDesc();
+
+    List<Event>findByDateBefore(ZonedDateTime date);
+
+    List<Event>findByDateAfter(ZonedDateTime date);
 
 }
