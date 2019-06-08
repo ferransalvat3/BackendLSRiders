@@ -129,7 +129,7 @@ public class EventResource {
         LocalDate dateTime = LocalDate.parse(dateString, formatter);
 
         ZonedDateTime resultado = dateTime.atStartOfDay(ZoneId.systemDefault());
-        return eventRepository.findByDateAfter(resultado);
+        return eventRepository.findByDateBefore(resultado);
     }
 
     /**
